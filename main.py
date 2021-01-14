@@ -10,7 +10,11 @@ from sklearn.model_selection import train_test_split
 import read_csv
 import seperateTarget
 import infoDataFrame
+import visualizeInfo
 
+
+############################################################################################################################
+#Preperation of the files
 
 #Here are all configurations to be done for module readCSV:
 test_file_path = 'test.csv'
@@ -22,7 +26,7 @@ target = 'SalePrice'
 train_size = 0.8
 test_size = 0.2
 
-
+############################################################################################################################
 
 
 
@@ -34,5 +38,9 @@ X, y = seperateTarget.seperate(X,target)
 #seperate training data into train and validation sets
 X_train, X_valid, y_train, y_valid = train_test_split(X, y, train_size=train_size, test_size=test_size,random_state=0)
 
-infoDataFrame.general(X)
-infoDataFrame.missing_value_per_column(X)
+n_rows,n_cols = infoDataFrame.general(X)
+namemissing, missing = infoDataFrame.missing_value_per_column(X)   #return array
+object_cols, numeric_cols= infoDataFrame.colType(X)
+
+visualizeInfo.visualize(n_rows,n_cols,object_cols, numeric_cols, namemissing, missing)
+########################################################################################################################################
