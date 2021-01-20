@@ -26,5 +26,15 @@ def visualize(n_rows,n_cols,object_cols, numeric_cols, namemissing, missing):
     plt.pie(y,labels=my_labels,colors = my_colors)
     plt.show()
 
+def plot_maes(maes, n_estimators):
+    plt.style.use('seaborn')
+    plt.figure(figsize=(10, 6))
+    plt.xticks(rotation='vertical')
+    plt.plot(n_estimators,maes)
+    plt.title('mean absolut error for n_estimators')
+    plt.xlabel('n_estimators')
+    plt.ylabel('mean absolut error')
+    plt.show()
+
 
 

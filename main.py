@@ -11,6 +11,7 @@ import read_csv
 import seperateTarget
 import infoDataFrame
 import visualizeInfo
+import model
 
 
 ############################################################################################################################
@@ -43,4 +44,19 @@ namemissing, missing = infoDataFrame.missing_value_per_column(X)   #return array
 object_cols, numeric_cols= infoDataFrame.colType(X)
 
 visualizeInfo.visualize(n_rows,n_cols,object_cols, numeric_cols, namemissing, missing)
+
+object_cols = [cname for cname in X_train.columns if X_train[cname].dtype == "object"]
+numerical_X_train = X_train.drop(object_cols, axis=1)
+numerical_X_valid = X_valid.drop(object_cols, axis=1)
+maes =[]
+mae1=model.numerical_data_xgboost(numerical_X_train, numerical_X_valid,y_train,y_valid)
+maes.append(mae1)
+
+'''
+n_estimators = [100,200,300,400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1900,2000]
+maes = model.numerical_data_xgboost_n_estimators(numerical_X_train, numerical_X_valid,y_train,y_valid,n_estimators)
+visualizeInfo.plot_maes(maes, n_estimators)
+''' #auskommentiert da berechnung länger dauert --> ergebnis am besten bei n_estimator=1400
+
+
 ########################################################################################################################################
