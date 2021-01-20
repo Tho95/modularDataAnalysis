@@ -14,7 +14,7 @@ def numerical_data_xgboost(numerical_X_train, numerical_X_valid,y_train,y_valid)
     imputed_X_train.columns = numerical_X_train.columns
     imputed_X_valid.columns = numerical_X_valid.columns
 
-    my_model = XGBRegressor(random_state=0,n_estimators=500)
+    my_model = XGBRegressor(random_state=0,n_estimators=1400,colsample_bytree=0.9,max_depth=20, reg_alpha=1.5,reg_lambda=1.1,subsample=0.7)
 
     my_model.fit(imputed_X_train, y_train)
 
@@ -26,6 +26,8 @@ def numerical_data_xgboost(numerical_X_train, numerical_X_valid,y_train,y_valid)
 
     return mae_1
 
+#We do not need to run this function every time. We did it once and saw that n_estimators =1400 is a good value.
+#We will put the value in the function above (numerical_data_xgboost)
 def numerical_data_xgboost_n_estimators(numerical_X_train, numerical_X_valid,y_train,y_valid,n_esimators):
     maes = []
     my_imputer = SimpleImputer(strategy='median')

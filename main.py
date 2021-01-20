@@ -12,6 +12,7 @@ import seperateTarget
 import infoDataFrame
 import visualizeInfo
 import model
+import hyperparameter_optimization
 
 
 ############################################################################################################################
@@ -60,3 +61,4 @@ visualizeInfo.plot_maes(maes, n_estimators)
 
 
 ########################################################################################################################################
+#hyperparameter_optimization.xgboost_hyper(numerical_X_train, numerical_X_valid, y_train, y_valid)
