@@ -41,12 +41,12 @@ def xgboost_hyper(numerical_X_train, numerical_X_valid, y_train, y_valid):
 
     model = XGBRegressor()
     param_grid = {
-        'n_estimators': [1000,1400],
-        'colsample_bytree': [0.7,0.9,1],
-        'max_depth': [10,15,20],
-        'reg_alpha': [1.1, 1.5],
-        'reg_lambda': [1.1, 1.5],
-        'subsample': [0.6,0.7,0.8]
+        'n_estimators': [1300,1400,1500],
+        'colsample_bytree': [0.85,0.9,0.95],
+        'max_depth': [18,20,22],
+        'reg_alpha': [1.4, 1.5, 1.6],
+        'reg_lambda': [1.1, 1.2],
+        'subsample': [0.7,0.75]
     }
 
     model, pred = algorithm_pipeline(imputed_X_train, imputed_X_valid, y_train, y_valid, model,

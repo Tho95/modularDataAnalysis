@@ -93,7 +93,7 @@ def preprocess(X_train, X_val, y_train, y_val):
                       ('highcard', categorial_pipe_constant_none_ohe, high_cardinality_cols),
                       ('rest', numerical_pipe_median, rest_cols)
                       ])
-    modelxgb = XGBRegressor(colsample_bytree=0.9,max_depth=20, n_estimators=1400, reg_alpha=1.5, rag_lambda=1.1, subsample=0.7, random_state=0)
+    modelxgb = XGBRegressor(random_state=0, colsample_bytree= 0.9,max_depth=18, n_estimators=1500, reg_alpha=1.4,reg_lambda=1.1,subsample=0.7)
     #hyperparameter from hyperparameter optimization with numerical model. Because a new comutation ould take to long for now
     pipe = Pipeline(steps=[('preprocessor', preprocessor),
                            ('model', modelxgb)])

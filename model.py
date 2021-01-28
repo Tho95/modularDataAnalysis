@@ -39,7 +39,7 @@ def numerical_data_xgboost_n_estimators(numerical_X_train, numerical_X_valid,y_t
     imputed_X_valid.columns = numerical_X_valid.columns
     print(n_esimators)
     for n in n_esimators:
-        model = XGBRegressor(random_state=0,n_estimators=n)
+        model = XGBRegressor(random_state=0, colsample_bytree= 0.9,max_depth=20, n_estimators=1400, reg_alpha=1.5,reg_lambda=1.1,subsample=0.7)
 
         model.fit(imputed_X_train, y_train)
 
